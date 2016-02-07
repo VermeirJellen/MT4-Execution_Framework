@@ -6,12 +6,12 @@ This mql4-framework consists of a few dedicated modules that are linked together
 To create an expert advisor, the user must copy and overwrite the main expert .mq4 file and the "trading criterion" include file that contains the actual trading logic.
 
 - View `experts/Skeleton.mq4`: This module links all the other modules in the framework together. When creating a new Expert Advisor (eg, trading bot), the user should first copy and rename this file and subsequently place it in the `./experts` folder. Next, Line 37 of the file should be modified in such a way that it links to the "trading criterion" include file of the new expert advisor. View `experts/MomentumEA.mq4` for an example.
-- View `include/TradingCriterionSkeleton.mqh`: This module contains the functions with the trading logic that should be defined by the user. The user should copy and rename this file and place it in the `./include` directory. Trading criterion functions are documented in the skeleton file and are further discussed in the "TRADING CRITERION FUNCTIONS" section below. View `include/TradingCriterionMomentumEA.mqh` for an example.
+- View `include/TradingCriterionSkeleton.mqh`: This module contains the functions with the trading logic that should be defined by the user. The user should copy and rename this file and place it in the `./include` directory. Trading criterion functions are documented in the skeleton file and are further discussed in the "Framework Functions (overwrite)" section below. View `include/TradingCriterionMomentumEA.mqh` for an example.
 
 Additionally, also view `indicators/Information.mq4`: When this indicator is attached, event logs and debug information are printed on a separate chart window (instead of the journal).
 
 ###EXAMPLE
-The trading rules for a simple momentum strategy are implemented in `include/TradingCriterionSkeleton.mqh`. The strategy only allows for a maximum of one open trade at any given time. Trading conditions and order modifications are performed at the start of every new bar instead of every tick. The latter condition is enforced by overwriting the framework settings during the initialization procedure.
+The trading rules for a simple momentum strategy are implemented in `include/TradingCriterionSkeleton.mqh`. The strategy only allows for a maximum of one open trade at any given time. Trading conditions and order modifications are performed at the start of every new bar instead of every new tick. The latter condition is enforced by overwriting the framework settings during the initialization procedure.
 
 ##### Entry Conditions
 - Go long when no other trade is currently active and the difference between the closing price and opening price of the previous bar is greater than `atrMultiplier`* ATR(`atrPeriod`), where `atrMultiplier` and `atrPeriod` are user defined external parameters. 
@@ -33,7 +33,7 @@ The trade management rules become active when a trade has been opened for at lea
 - Trailing stop: For a long position we subtract the trailing distance from the `Bid` price. If the resulting value is higher than the current Stoploss level then we update the Stoploss level with the new value. For the short scenario, we add the trailing distance to the `Ask` price and perform the comparison.
 - No trailing stop: We close the trade when it is in profit.
 
-Hence, when setting the Take Profit level we automatically assume that momentum is over when the Take Profit is not hit after three bars. However, when using a trailing stop we let our winners run as long as possible in order to potentially capture a small trend.
+Hence, when setting the Take Profit level we assume that momentum is over when the Take Profit is not hit after three bars. However, when using a trailing stop we let our winners run as long as possible in order to potentially capture a small trend.
  
 ##
 
