@@ -3,7 +3,7 @@
 This mql4-framework consists of a few dedicated modules that are linked together in order to assist the user with rapid prototyping and testing of simple TA forex strategies. An example expert advisor is also added for demonstration purposes. Note that the project was created before the object oriented refactoring of the mql4 language: Backward compatibility ensures that all functionality remains valid.
 
 ###USAGE
-To create an expert advisor, the user must copy and overwrite the main expert .mq4 file and the "trading criterion" include file that contains the actual trading logic.
+To create an expert advisor, the user must copy and overwrite the main expert `.mq4` file and the `trading criterion` include file that contains the actual trading logic.
 
 - View `experts/Skeleton.mq4`: This module links all the other modules in the framework together. When creating a new Expert Advisor (eg, trading bot), the user should first copy and rename this file and subsequently place it in the `./experts` folder. Next, Line 37 of the file should be modified in such a way that it links to the "trading criterion" include file of the new expert advisor. View `experts/MomentumEA.mq4` for an example.
 - View `include/TradingCriterionSkeleton.mqh`: This module contains the functions with the trading logic that should be defined by the user. The user should copy and rename this file and place it in the `./include` directory. Trading criterion functions are documented in the skeleton file and are further discussed in the "Framework Functions (overwrite)" section below. View `include/TradingCriterionMomentumEA.mqh` for an example.
@@ -92,5 +92,5 @@ jellenvermeir@gmail.com
 Metatrader 4 - Backtest and Execution Framework is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 Metatrader 4 - Backtest and Execution Framework is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
 
-You should have received a copy of the GNU Lesser General Public License along with Actuarial Statistics project. If not, see <http://www.gnu.org/licenses/>.
+You should have received a copy of the GNU Lesser General Public License along with Metatrader 4 - Backtest and Execution Framework project. If not, see <http://www.gnu.org/licenses/>.
 ##
